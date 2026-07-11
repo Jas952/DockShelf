@@ -17,7 +17,7 @@
 
 
 <p>
-  <img src="./assets-github/n1.gif" alt="Project Demo" width="92" height="92" align="left"/>
+  <img src="./assets-github/n1.gif" alt="Project Demo" width="92" align="left"/>
 </p>
 <pre hspace="12">
   <img src="./assets-github/contacts/tg.jpg" alt="Telegram" height="14" /> Telegram ······ <a href="https://t.me/Jas953/">t.me/Jas953</a>
