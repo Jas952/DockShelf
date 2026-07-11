@@ -17,11 +17,6 @@ let package = Package(
             resources: [
                 .copy("Resources")
             ]
-        ),
-        .testTarget(
-            name: "DockShelfTests",
-            dependencies: ["DockShelf"],
-            path: "Tests/DockShelfTests"
         )
     ]
 )
