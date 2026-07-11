@@ -16,7 +16,6 @@
 - Supports launch at login and native Finder folder export.
 
 <br clear="right" />
-
 ### Install
 
 1. Download the latest DMG from [Releases](https://github.com/Jas952/DockShelf/releases/latest).
