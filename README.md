@@ -17,6 +17,8 @@
 
 <br clear="right" />
 
+<hr align="left" width="62%" />
+
 ### Install
 
 1. Download the latest DMG from [Releases](https://github.com/Jas952/DockShelf/releases/latest).
