@@ -4,7 +4,7 @@
 
 DockShelf is a lightweight macOS utility for keeping frequently used apps in a compact side shelf. It stays out of the Dock, opens from the menu bar or edge trigger, and lets you organize launch shortcuts into clean categories.
 
-<img align="left" src=".github/assets/onboarding-demo.gif" alt="DockShelf demo" height="190" />
+<img align="left" src=".github/assets/onboarding-demo.gif" alt="DockShelf demo" height="150" />
 
 ## What it does
 
