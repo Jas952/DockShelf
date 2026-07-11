@@ -6,7 +6,7 @@
 
 <hr align="left" width="62%" />
 
-<img align="right" src="./assets-github/what-it-does-demo.gif" alt="DockShelf in use" width="284" height="200" />
+<img align="right" src=".github/assets/what-it-does.gif" alt="DockShelf in use" width="284" height="200" />
 
 ### What it does
 
@@ -19,11 +19,11 @@
 
 
 <p>
-  <img src="./assets-github/n1.gif" alt="Project Demo" width="92" align="left"/>
+  <img src=".github/assets/contact-network.gif" alt="Project Demo" width="92" align="left"/>
 </p>
 <pre hspace="12">
-  <img src="./assets-github/contacts/tg.jpg" alt="Telegram" height="14" /> Telegram ······ <a href="https://t.me/Jas953/">t.me/Jas953</a>
-  <img src="./assets-github/contacts/lnk.jpg" alt="LinkedIn" height="14" /> LinkedIn ······ <a href="https://www.linkedin.com/in/jas952/">linkedin.com/in/jas952</a>
-  <img src="./assets-github/contacts/x.jpg" alt="X" height="14" /> X        ······ <a href="https://x.com/not__jas">x.com/not__jas</a>
+  <img src=".github/assets/contacts/telegram.jpg" alt="Telegram" height="14" /> Telegram ······ <a href="https://t.me/Jas953/">t.me/Jas953</a>
+  <img src=".github/assets/contacts/linkedin.jpg" alt="LinkedIn" height="14" /> LinkedIn ······ <a href="https://www.linkedin.com/in/jas952/">linkedin.com/in/jas952</a>
+  <img src=".github/assets/contacts/x.jpg" alt="X" height="14" /> X        ······ <a href="https://x.com/not__jas">x.com/not__jas</a>
 </pre>
 <br clear="left" />
