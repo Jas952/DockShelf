@@ -4,6 +4,8 @@
 
 <strong><big><big><big>DockShelf</big></big></big></strong>  <a href="https://github.com/Jas952/DockShelf/releases/latest"><img src="https://img.shields.io/badge/Download-DMG-2585F5?style=for-the-badge&logo=apple&logoColor=white" alt="Download DockShelf DMG" valign="middle" /></a>  is a lightweight macOS utility for keeping frequently used apps in a compact side shelf. It stays out of the Dock, opens from the menu bar or edge trigger, and lets you organize launch shortcuts into clean categories.
 
+<hr align="left" width="62%" />
+
 <img align="right" src="./assets-github/what-it-does-demo.gif" alt="DockShelf in use" width="284" height="200" />
 
 ### What it does
