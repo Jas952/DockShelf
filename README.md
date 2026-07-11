@@ -1,24 +1,8 @@
 <div align="center">
 
-<table>
-  <tr>
-    <td align="center" width="250">
-      <img src="docs/media/app-icon.png" alt="DockShelf icon" width="128" />
-      <h1>DockShelf</h1>
-      <p><strong>A quiet home for the apps you reach for most.</strong></p>
-      <p>Group applications and keep them one gesture away without adding another icon to your Dock.</p>
-    </td>
-    <td align="center">
-      <img src="docs/media/launcher-panel.png" alt="DockShelf expanded launcher" height="440" />
-    </td>
-    <td align="center">
-      <img src="docs/media/settings.png" alt="DockShelf settings" height="440" />
-    </td>
-  </tr>
-</table>
+<img src="docs/media/readme-header.png" alt="DockShelf app, launcher, and settings" width="100%" />
 
-<img src="https://img.shields.io/badge/Swift-5.9-F05138?logo=swift&logoColor=white" alt="Swift 5.9" />
-<img src="https://img.shields.io/badge/macOS-13%2B-111111?logo=apple&logoColor=white" alt="macOS 13 or later" />
+DockShelf groups your macOS applications and keeps them one gesture away without adding another icon to the Dock.
 
 [Demo](#demo) · [Build from source](#build-from-source) · [Documentation](docs/architecture.md)
 
