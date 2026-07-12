@@ -10,27 +10,21 @@ final class ShelfStore: ObservableObject {
     }
     @Published var selectedGroupID: ShelfGroup.ID? {
         didSet {
-            UserDefaults.standard.set(selectedGroupID?.uuidString, forKey: selectedGroupKey)
+            save()
         }
     }
 
-    private let defaultsKey = "dockShelf.groups.v1"
-    private let selectedGroupKey = "dockShelf.selectedGroup.v1"
     private let seededDevinKey = "dockShelf.seededDevin.v2"
 
-    init() {
-        if
-            let data = UserDefaults.standard.data(forKey: defaultsKey),
-            let decoded = try? JSONDecoder().decode([ShelfGroup].self, from: data),
-            !decoded.isEmpty
-        {
-            groups = decoded
-        } else {
-            groups = ShelfGroup.sampleData
-        }
+    private struct PersistedState: Codable {
+        var groups: [ShelfGroup]
+        var selectedGroupID: ShelfGroup.ID?
+    }
 
-        let selectedGroupString = UserDefaults.standard.string(forKey: selectedGroupKey)
-        selectedGroupID = selectedGroupString.flatMap(UUID.init(uuidString:))
+    init() {
+        let restoredState = Self.loadPersistedState() ?? Self.loadLegacyState()
+        groups = restoredState?.groups ?? ShelfGroup.sampleData
+        selectedGroupID = restoredState?.selectedGroupID
         repairSelectedGroup()
         repairApplicationLinks()
         seedDevinIfNeeded()
@@ -138,11 +132,65 @@ final class ShelfStore: ObservableObject {
     }
 
     private func save() {
-        guard let data = try? JSONEncoder().encode(groups) else {
+        let state = PersistedState(groups: groups, selectedGroupID: selectedGroupID)
+        guard let data = try? JSONEncoder().encode(state) else {
             return
         }
 
-        UserDefaults.standard.set(data, forKey: defaultsKey)
+        let directoryURL = Self.persistenceDirectoryURL
+        do {
+            try FileManager.default.createDirectory(
+                at: directoryURL,
+                withIntermediateDirectories: true,
+                attributes: nil
+            )
+            try data.write(to: Self.persistenceURL, options: .atomic)
+        } catch {
+            return
+        }
+    }
+
+    private static var persistenceDirectoryURL: URL {
+        let fileManager = FileManager.default
+        let applicationSupportURL = fileManager.urls(
+            for: .applicationSupportDirectory,
+            in: .userDomainMask
+        ).first ?? fileManager.homeDirectoryForCurrentUser
+            .appendingPathComponent("Library/Application Support", isDirectory: true)
+
+        return applicationSupportURL.appendingPathComponent("DockShelf", isDirectory: true)
+    }
+
+    private static var persistenceURL: URL {
+        persistenceDirectoryURL.appendingPathComponent("ShelfState.json", isDirectory: false)
+    }
+
+    private static func loadPersistedState() -> PersistedState? {
+        guard
+            let data = try? Data(contentsOf: persistenceURL),
+            let state = try? JSONDecoder().decode(PersistedState.self, from: data),
+            !state.groups.isEmpty
+        else {
+            return nil
+        }
+
+        return state
+    }
+
+    private static func loadLegacyState() -> PersistedState? {
+        guard
+            let data = UserDefaults.standard.data(forKey: "dockShelf.groups.v1"),
+            let groups = try? JSONDecoder().decode([ShelfGroup].self, from: data),
+            !groups.isEmpty
+        else {
+            return nil
+        }
+
+        let selectedGroupString = UserDefaults.standard.string(forKey: "dockShelf.selectedGroup.v1")
+        return PersistedState(
+            groups: groups,
+            selectedGroupID: selectedGroupString.flatMap(UUID.init(uuidString:))
+        )
     }
 
     private var selectedGroupIndex: Array<ShelfGroup>.Index? {
