@@ -247,21 +247,24 @@ struct LauncherPanelView: View {
         if visibleApps.isEmpty {
             Spacer(minLength: 0)
         } else {
-            VStack(spacing: 10) {
-                ForEach(visibleApps) { app in
-                    Button {
-                        launch(app)
-                    } label: {
-                        AppIconImage(app: app)
-                            .frame(width: 52, height: 52)
-                            .frame(width: 78, height: 64)
-                            .contentShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
+            ScrollView(.vertical, showsIndicators: false) {
+                LazyVStack(spacing: 10) {
+                    ForEach(visibleApps) { app in
+                        Button {
+                            launch(app)
+                        } label: {
+                            AppIconImage(app: app)
+                                .frame(width: 52, height: 52)
+                                .frame(width: 78, height: 64)
+                                .contentShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
+                        }
+                        .buttonStyle(.plain)
+                        .help(app.name)
                     }
-                    .buttonStyle(.plain)
-                    .help(app.name)
                 }
+                .padding(.bottom, 6)
             }
-            .padding(.bottom, 6)
+            .frame(maxHeight: .infinity, alignment: .top)
             .animation(.easeInOut(duration: 0.20), value: isDropTargeted)
         }
     }
