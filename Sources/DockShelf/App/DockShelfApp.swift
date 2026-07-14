@@ -24,7 +24,7 @@ struct DockShelfApp: App {
         }
 
         Window("About DockShelf", id: "about") {
-            AboutView()
+            AboutView(updateController: coordinator.updateController)
         }
         .windowResizability(.contentSize)
     }

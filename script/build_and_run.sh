@@ -14,6 +14,7 @@ APP_BUNDLE="$DIST_DIR/$APP_NAME.app"
 APP_CONTENTS="$APP_BUNDLE/Contents"
 APP_MACOS="$APP_CONTENTS/MacOS"
 APP_RESOURCES="$APP_CONTENTS/Resources"
+APP_FRAMEWORKS="$APP_CONTENTS/Frameworks"
 APP_BINARY="$APP_MACOS/$APP_NAME"
 INFO_PLIST="$APP_CONTENTS/Info.plist"
 APP_ICON_GENERATOR="$ROOT_DIR/script/generate_app_icon.swift"
@@ -26,9 +27,13 @@ swift build
 BUILD_BINARY="$(swift build --show-bin-path)/$APP_NAME"
 
 rm -rf "$APP_BUNDLE"
-mkdir -p "$APP_MACOS" "$APP_RESOURCES"
+mkdir -p "$APP_MACOS" "$APP_RESOURCES" "$APP_FRAMEWORKS"
 cp "$BUILD_BINARY" "$APP_BINARY"
 chmod +x "$APP_BINARY"
+if [[ -d "$BUILD_BINARY/../Sparkle.framework" ]]; then
+  ditto "$BUILD_BINARY/../Sparkle.framework" "$APP_FRAMEWORKS/Sparkle.framework"
+  /usr/bin/install_name_tool -add_rpath "@executable_path/../Frameworks" "$APP_BINARY"
+fi
 if [[ -x "$APP_ICON_GENERATOR" ]]; then
   "$APP_ICON_GENERATOR" "$APP_RESOURCES/AppIcon.icns"
 else
@@ -60,6 +65,14 @@ cat >"$INFO_PLIST" <<PLIST
   <string>APPL</string>
   <key>LSMinimumSystemVersion</key>
   <string>$MIN_SYSTEM_VERSION</string>
+  <key>SUFeedURL</key>
+  <string>https://raw.githubusercontent.com/Jas952/DockShelf/main/.github/appcast.xml</string>
+  <key>SUPublicEDKey</key>
+  <string>CTjEC8T+/KbYNAF9Tm+GSM9KCQu2+AIuHQSNJJGjV+o=</string>
+  <key>SUEnableAutomaticChecks</key>
+  <true/>
+  <key>SUScheduledCheckInterval</key>
+  <integer>86400</integer>
   <key>LSUIElement</key>
   <true/>
   <key>NSPrincipalClass</key>

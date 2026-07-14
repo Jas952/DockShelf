@@ -1,0 +1,19 @@
+<?xml version="1.0" standalone="yes"?>
+<rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0">
+    <channel>
+        <title>DockShelf</title>
+        <item>
+            <title>1.0.2</title>
+            <pubDate>Tue, 14 Jul 2026 14:29:50 +0300</pubDate>
+            <link>https://github.com/Jas952/DockShelf/releases</link>
+            <sparkle:version>3</sparkle:version>
+            <sparkle:shortVersionString>1.0.2</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>13.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <enclosure url="https://github.com/Jas952/DockShelf/releases/download/v1.0.2/DockShelf-1.0.2-macOS-arm64.zip" length="4494680" type="application/octet-stream" sparkle:edSignature="IRr8KUQJ/ptdF8ZjoDa47O79n0UKKJkkcg+Pad0bAfmgT4uMHTGLuM3Angcw0IMqoHeH4o+i3xrdZ1TV2huaAQ=="/>
+        </item>
+    </channel>
+</rss><!-- sparkle-signatures:
+edSignature: iTVmwO5yI7fxrtITKUw8Id3oGmnX5buwxgDQXU+ZSnKOSdkdoeXTYHgGybyzUly+czgAj9R4yeUsSR/pHspcAw==
+length: 957
+-->

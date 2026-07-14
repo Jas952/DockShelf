@@ -6,6 +6,7 @@ final class AppCoordinator: ObservableObject {
     let store: ShelfStore
     let launcherSettings: LauncherSettings
     let loginItemService: LoginItemService
+    let updateController: UpdateController
     let launcherPanelController: LauncherPanelController
     let launcherTabController: LauncherTabController
 
@@ -19,6 +20,7 @@ final class AppCoordinator: ObservableObject {
         self.store = store
         self.launcherSettings = launcherSettings
         self.loginItemService = LoginItemService()
+        self.updateController = UpdateController()
         self.launcherPanelController = LauncherPanelController(store: store, settings: launcherSettings)
         self.launcherTabController = LauncherTabController(
             launcherPanelController: launcherPanelController,
@@ -36,6 +38,7 @@ final class AppCoordinator: ObservableObject {
         DispatchQueue.main.async {
             self.launcherTabController.show()
             self.onboardingWindowController.showAtLaunch()
+            self.updateController.start()
         }
     }
 
